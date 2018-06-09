@@ -4,13 +4,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head></h:head>
 <h:body>
 
 	<ui:composition>
-	<h3>BURAYA BAŞKIK</h3>	
+	 
+ 	  
+	     <p:menubar>
+              <p:menuitem value="Anasayfa" url="anasayfa.jsf" icon="ui-icon-home" />
+              <p:menuitem value="Profil" url="profil.jsf" icon="ui-icon-person" />
+      
+ 
+         
+ 
+ 
+        <f:facet name="options">
+            <h:form>
+            <p:inputText style="margin-right:10px" placeholder="Arama"/>
+            <p:commandButton type="button" icon="ui-icon-search" style="margin-right:50px;" />
+            
+            <p:commandButton value="Çıkış" icon="ui-icon-power" action="cikis.jsf" />
+            </h:form>
+        </f:facet>
+    </p:menubar>
+	  			
+	  			
+	  
+ 
+	  
+ 
+
+	
 	</ui:composition>
 
 </h:body>
