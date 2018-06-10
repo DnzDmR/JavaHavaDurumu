@@ -26,7 +26,7 @@
             <p:inputText style="margin-right:10px" placeholder="Arama"/>
             <p:commandButton type="button" icon="ui-icon-search" style="margin-right:50px;" />
             
-            <p:commandButton value="Çıkış" icon="ui-icon-power" action="cikis.jsf" />
+            <p:commandButton value="Çıkış" icon="ui-icon-power" action="#{usersController.sessionDestroy}" />
             </h:form>
         </f:facet>
     </p:menubar>

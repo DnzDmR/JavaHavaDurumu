@@ -4,14 +4,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.facelets.FaceletContext;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.servlet.http.HttpSession;
 
 import com.deniz.crud.UserCRUD;
 import com.deniz.model.Users;
+import com.deniz.session.UserSession;
  
 
 @ManagedBean
@@ -65,6 +62,8 @@ public class UsersController {
 		
 		if(mesaj.getSeverity()==FacesMessage.SEVERITY_INFO)
 		{
+			HttpSession session = UserSession.getSession();
+			session.setAttribute("eposta", kullaniciMail);
 			return "anasayfa.jsf?faces-redirect=true";
 		}
 		else
@@ -84,6 +83,23 @@ public class UsersController {
 		
 		FacesMessage mesaj = UserCRUD.kullaniciKayit(user);
 		FacesContext.getCurrentInstance().addMessage(null, mesaj);
+	}
+	
+	
+	public void sessionKontrol()
+	{
+		if(UserSession.getKullaniciAdi()==null)
+		{
+			try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
+			}catch(Exception e) {e.printStackTrace();}
+		} 
+	}
+	
+	public String sessionDestroy()
+	{
+		UserSession.sessionDestroy();
+		return "index.jsf?faces-redirect=true";
 	}
 	 
 	
