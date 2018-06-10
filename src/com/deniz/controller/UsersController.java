@@ -88,7 +88,7 @@ public class UsersController {
 	
 	public void sessionKontrol()
 	{
-		if(UserSession.getKullaniciAdi()==null)
+		if(UserSession.getEposta()==null)
 		{
 			try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");

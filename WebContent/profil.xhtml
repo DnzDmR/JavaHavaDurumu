@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+ <h:head></h:head>
+ <h:body>
+ <ui:composition template="/template/maintemplate.xhtml">
+ <ui:define name="title"> Hoşgeldiniz</ui:define>
+ <ui:define name="content">
+ 
+ 
+ <p:panel styleClass="top20">
+ 	
+ 	<h:form id="sehirListe">
+ 	<p:panelGrid columns="3">
+ 		<p:outputLabel value="Şehir" />
+ 		<p:inputText value="#{cityController.sehir}"/>
+ 		<p:commandButton  value="Ekle" action="#{cityController.sehirEkle}" update="sehirListe"/>
+ 	</p:panelGrid>
+  	<p:messages />
+ 	<p:dataList  styleClass="top20"  var="row" value="#{cityController.sehirList()}">
+ 	<f:facet name="header">Takip Listesi</f:facet> 
+ 	 #{row.SEHIR}
+ 	 
+ 	</p:dataList>
+  	</h:form>
+ </p:panel>
+ 
+ 
+ 
+ 
+	
+ </ui:define>
+ </ui:composition>
+ 
+ </h:body>
+</html>

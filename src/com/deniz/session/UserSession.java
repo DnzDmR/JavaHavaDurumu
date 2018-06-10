@@ -22,7 +22,7 @@ public class UserSession {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
 	
-	public static String getKullaniciAdi() {
+	public static String getEposta() {
 		HttpSession session = getSession();
 		if (session != null){ 
 			return (String) session.getAttribute("eposta");
