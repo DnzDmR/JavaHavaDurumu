@@ -4,23 +4,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
- <h:head></h:head>
- <h:body>
- <ui:composition template="/template/maintemplate.xhtml">
- <ui:define name="title"> Hoşgeldiniz</ui:define>
- <ui:define name="content">
+<h:head>
+<h:outputStylesheet name="grid.css" library="css" />
+</h:head>
+<h:body style="background:#EEEEEE;">
+
+
+<div class="ui-g-12 ui-md-2 ui-lg-4"></div>
+
+<p:tabView class="ui-g-12 ui-md-8 ui-lg-4">
+ <p:tab title="Giriş Yap">
+ 	<h:form id="girisForm">
+ 	<p:panelGrid columns="2">
+ 	<p:outputLabel value="e-posta"/>
+ 	<p:inputText required="true" requiredMessage="eposta boş geçilemez"/>
+ 	<p:outputLabel value="şifre"/>
+ 	<p:password required="true" requiredMessage="şifre boş geçilemez" />
+ 	<p:outputLabel/>
+ 	<p:commandButton value="Giriş Yap" class="ui-g-12" action="anasayfa.jsf" update="girisForm" />
+ 	</p:panelGrid>
+ 	<p:messages/>
+ 	</h:form>
+ </p:tab>
  
+ <p:tab title="Kayıt Ol">
  
- 
- 
- 
- 
- 
-	
- </ui:define>
- </ui:composition>
- 
- </h:body>
+	 <h:form id="kayitForm">
+	 <p:panelGrid columns="2">
+	 <p:outputLabel value="Ad" />
+	 <p:inputText  required="true" requiredMessage="ad boş geçilemez" />
+	 <p:outputLabel value="Soyad" />
+	 <p:inputText required="true" requiredMessage="soyad boş geçilemez" />
+	 <p:outputLabel value="e-posta" />
+	 <p:inputText required="true" requiredMessage="eposta boş geçilemez"/>
+	 <p:outputLabel value="Şifre" />
+	 <p:inputText required="true" requiredMessage="şifre boş geçilemez"/>
+	 <p:outputLabel/>
+	 <p:commandButton class="ui-g-12"  value="Kayıt Ol" update="kayitForm"/>
+	 </p:panelGrid>
+	 <p:messages />
+	 </h:form>
+	 
+ </p:tab>
+</p:tabView>
+
+
+
+
+
+</h:body>
 </html>
