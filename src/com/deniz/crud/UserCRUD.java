@@ -97,7 +97,15 @@ public class UserCRUD {
 			ts.begin();
 			List<Users> user = sorgu.getResultList();
 			ts.commit();
-			return user.get(0);
+			
+			if(user.size()>0)
+			{
+				return user.get(0);	
+			}
+			else
+			{
+				return null;
+			}
 			
 		}catch (Exception e) {
 			e.printStackTrace();

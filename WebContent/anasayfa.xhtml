@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
  <h:head></h:head>
@@ -11,8 +12,57 @@
  <ui:composition template="/template/maintemplate.xhtml">
  <ui:define name="title"> Hoşgeldiniz</ui:define>
  <ui:define name="content">
+
+ <p:panel styleClass="top20">
  
  
+
+ <p:dataList var="row" value="#{cityController.sehirList()}">
+ 
+ <f:facet name="header">Takip Listesi</f:facet>
+	 <h:panelGrid columns="2"  >
+ 		<p:commandButton icon="ui-icon-select">
+ 		 	<p:ajax listener="#{weatherController.sehirSecimi(row.SEHIR)}" />
+ 		 	<p:ajax event="click" update="anaForm:formmy" />
+ 		</p:commandButton>
+  		<p:outputLabel value="#{row.SEHIR}" />
+ 	 </h:panelGrid>
+ </p:dataList>
+ 
+ <h:form id="anaForm">
+ <p:dataList var="row" value="#{weatherController.havaDurumuCek()}" id="formmy">
+ <f:facet name="header">Hava Durumu</f:facet>
+ <p:panelGrid columns="2" styleClass="top20">
+ 	<p:outputLabel value="Şehir" />
+ 	<p:outputLabel value="#{row.sehirAdi}" />
+ 	<p:outputLabel value="Sıcaklık" />
+ 	<p:outputLabel value="#{row.sehirSicaklik} Derece" />
+ 	<p:outputLabel value="Hava Durumu" />
+ 	<p:outputLabel value="#{row.sehirHavaDurumu}" />
+ 	<p:outputLabel />
+ 	<p:graphicImage url="http:#{row.sehirHavaIcon}" />
+ 	<p:outputLabel value="Konum" />
+ 	<p:outputLabel value="#{row.sehirKonum}" />
+ 	<p:outputLabel value="Enlem" />
+ 	<p:outputLabel value="#{row.sehirEnlem}" />
+ 	<p:outputLabel value="Boylam" />
+ 	<p:outputLabel value="#{row.sehirBoylam}" />
+ 	<p:outputLabel value="Yerel Saat" />
+ 	<p:outputLabel value="#{row.sehirLocalSaat}" />
+ 	<p:outputLabel value="Nem Orani" />
+ 	<p:outputLabel value="#{row.sehirNemOrani}" />
+ 	<p:outputLabel value="Rüzgar Hızı" />
+ 	<p:outputLabel value="#{row.sehirRuzgarHizi} km/s" />
+ 	<p:outputLabel value="Son Güncelleme" />
+ 	<p:outputLabel value="#{row.sehirSonGuncelleme}" />
+ 	
+ </p:panelGrid>
+ 
+ </p:dataList>
+ 
+  </h:form>
+  
+ </p:panel>
  
  
  

@@ -46,10 +46,7 @@ public class CityController {
 		this.sehir = sehir;
 	}
 
- 
-	
-	
-	
+  
 	public void sehirEkle()
 	{
 		Cities sehir = new Cities();
@@ -61,6 +58,13 @@ public class CityController {
 		FacesContext.getCurrentInstance().addMessage(null, mesaj);
 		
 	}
+	
+	public void sehirSil(Integer secilenId)
+	{
+		FacesMessage mesaj =CityCRUD.sehirSil(secilenId);
+		FacesContext.getCurrentInstance().addMessage(null, mesaj);
+	}
+	
 	
 	public List<Cities> sehirList()
 	{

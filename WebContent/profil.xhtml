@@ -22,13 +22,23 @@
  		<p:inputText value="#{cityController.sehir}"/>
  		<p:commandButton  value="Ekle" action="#{cityController.sehirEkle}" update="sehirListe"/>
  	</p:panelGrid>
+ 	
   	<p:messages />
+  	
  	<p:dataList  styleClass="top20"  var="row" value="#{cityController.sehirList()}">
- 	<f:facet name="header">Takip Listesi</f:facet> 
- 	 #{row.SEHIR}
+ 		<f:facet name="header">Takip Listesi</f:facet> 
+ 		 <p:commandButton value="-">
+  			<p:ajax event="click" listener="#{cityController.sehirSil(row.ID)}" update="sehirListe" />
+ 		 </p:commandButton>
+ 	 	<p:outputLabel value="#{row.SEHIR}" />
+ 	 
+ 
  	 
  	</p:dataList>
   	</h:form>
+  	
+   
+  	
  </p:panel>
  
  

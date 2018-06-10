@@ -40,11 +40,9 @@ public class CityCRUD {
 				ts.commit();
 			}
 			
-			
 			return new FacesMessage(FacesMessage.SEVERITY_INFO,"Şehir Eklendi",null);
 			
 		}catch (Exception e) {
-			e.printStackTrace();
 			return new FacesMessage(FacesMessage.SEVERITY_FATAL,"Ekleme Başarısız",null);
 		}finally {
 			em.close();
@@ -60,9 +58,7 @@ public class CityCRUD {
 		EntityManager em = mf.createEntityManager();
 		EntityTransaction ts = em.getTransaction();
 		
-		
 		try {
-		 
 			
 			Query sorgu = em.createQuery("Select c from Cities c where KULLANICI_ID=:kullaniciId");
 			sorgu.setParameter("kullaniciId", kullaniciId);
@@ -73,7 +69,6 @@ public class CityCRUD {
 			return sehir;
 			
 		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}finally {
 			em.close();
@@ -81,6 +76,32 @@ public class CityCRUD {
 		}
 		
 		
+	}
+	
+	
+	public static FacesMessage sehirSil(Integer secilenId)
+	{
+		EntityManagerFactory mf = Persistence.createEntityManagerFactory(persistenceUnitName);
+		EntityManager em = mf.createEntityManager();
+		EntityTransaction ts =em.getTransaction();
+				
+		try {
+			ts.begin();
+			Cities sehir = em.find(Cities.class, secilenId);
+			ts.commit();
+			
+			ts.begin();
+			em.remove(sehir);
+			ts.commit();
+		 
+			return new FacesMessage(FacesMessage.SEVERITY_INFO,"Şehir Silindi",null);
+			
+		}catch (Exception e) {
+			return new FacesMessage(FacesMessage.SEVERITY_FATAL,"Silme Başarısız",null);
+		}finally {
+			em.close();
+			mf.close();
+		}
 	}
 
 }
