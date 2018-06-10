@@ -20,11 +20,11 @@
  	<h:form id="girisForm">
  	<p:panelGrid columns="2">
  	<p:outputLabel value="e-posta"/>
- 	<p:inputText required="true" requiredMessage="eposta boş geçilemez"/>
+ 	<p:inputText required="true" requiredMessage="eposta boş geçilemez" value="#{usersController.kullaniciMail}"/>
  	<p:outputLabel value="şifre"/>
- 	<p:password required="true" requiredMessage="şifre boş geçilemez" />
+ 	<p:password required="true" requiredMessage="şifre boş geçilemez" value="#{usersController.kullaniciSifre}" />
  	<p:outputLabel/>
- 	<p:commandButton value="Giriş Yap" class="ui-g-12" action="anasayfa.jsf" update="girisForm" />
+ 	<p:commandButton value="Giriş Yap" class="ui-g-12" action="#{usersController.kullaniciGirisKontrol}" update="girisForm" />
  	</p:panelGrid>
  	<p:messages/>
  	</h:form>
@@ -35,15 +35,15 @@
 	 <h:form id="kayitForm">
 	 <p:panelGrid columns="2">
 	 <p:outputLabel value="Ad" />
-	 <p:inputText  required="true" requiredMessage="ad boş geçilemez" />
+	 <p:inputText  required="true" requiredMessage="ad boş geçilemez" value="#{usersController.kullaniciAdi}"/>
 	 <p:outputLabel value="Soyad" />
-	 <p:inputText required="true" requiredMessage="soyad boş geçilemez" />
+	 <p:inputText required="true" requiredMessage="soyad boş geçilemez" value="#{usersController.kullaniciSoyadi}"/>
 	 <p:outputLabel value="e-posta" />
-	 <p:inputText required="true" requiredMessage="eposta boş geçilemez"/>
+	 <p:inputText required="true" requiredMessage="eposta boş geçilemez" value="#{usersController.kullaniciMail}"/>
 	 <p:outputLabel value="Şifre" />
-	 <p:inputText required="true" requiredMessage="şifre boş geçilemez"/>
+	 <p:inputText required="true" requiredMessage="şifre boş geçilemez" value="#{usersController.kullaniciSifre}"/>
 	 <p:outputLabel/>
-	 <p:commandButton class="ui-g-12"  value="Kayıt Ol" update="kayitForm"/>
+	 <p:commandButton class="ui-g-12"  value="Kayıt Ol" update="kayitForm" action="#{usersController.kullaniciKayit}"/>
 	 </p:panelGrid>
 	 <p:messages />
 	 </h:form>
